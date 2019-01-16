@@ -1,4 +1,585 @@
-.MainImg{
-    width: 200px;
-    height: 200px;
+/*
+    DARK PRIMARY COLOR  #D32F2F
+    LIGHT PRIMARY COLOR #FFCDD2
+    PRIMARY COLOR   #F44336
+    TEXT / ICONS    #FFFFFF
+    ACCENT COLOR    #4CAF50
+    PRIMARY TEXT    #212121
+    SECONDARY TEXT  #757575
+    DIVIDER COLOR   #BDBDBD
+*/
+/*Main block for a sticky footer*/
+html, body{
+    max-width: 70em;
+    margin: 0 auto;
+    background-color: #f8f8f8;
+    margin-top: 0;
+
+   display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+
+    flex-direction: column;
 }
+header{
+    flex: 1 0 auto;
+    margin: 0 0 1em 0;
+}
+main{
+    margin: 1em 0 0 0;
+    flex: 1 0 auto;
+    align-items: flex-start;
+    min-height: calc(100vh - 12.5em);
+}
+footer{
+    height: 1em;
+    background-color: #FFCDD2;
+    margin: 1em 0 0 0;
+    padding: 0.5em;
+    text-align: right;
+}
+footer hr{
+    display: none;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: #212121;
+    font-family: Arial;
+}
+h2, h3, h4, h5, h6{
+    background-color: #FFCDD2;
+}
+h1{
+    font-size: 3em;
+    margin-left: 0.5em;
+/*border-left: 0.1em dashed #4CAF50;*/
+}
+h2{
+    font-size: 1.5em;
+    line-height: 1em;
+    padding: 0.5em 0 0.5em 0.5em;
+}
+h3{
+    font-size: 1.2em;
+    line-height: 1em;
+    padding: 0.3em 0 0.3em 0.3em;
+}
+div, p, li, form, input, textarea{
+    color: #757575;
+    font-family: Arial;
+}
+p:first-letter{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.4em;
+    color: #D32F2F;
+}
+a:hover{
+    color: #4CAF50;
+}
+a:active{
+    color: #D32F2F;
+}
+/*Header*/
+.header__top{
+    margin: 1em 0 0 0;
+    vertical-align: middle;
+}
+.logo{
+    display: table-cell;
+    max-width: 4em;
+    padding: 0 0 0 0.5em;
+    border-left: 0.4em dashed #4CAF50;
+    overflow: hidden;
+    vertical-align: middle;
+    background-color: white;
+}
+.logo a{
+    display: block;
+    width: 5em;
+    height: 3em;
+    padding: 0.1em 0em 0 0.1em;
+    margin: 0 0 0 0;
+    background: url("../img/logo.svg");
+    background-repeat: no-repeat;
+}
+.logo a.selected{
+    pointer-events: none;
+}
+.logo:hover a{
+    width: 100em;
+    animation: slide 60s cubic-bezier(0.05,0.2,1,1) infinite;
+    background-repeat: repeat-x;
+}
+@keyframes slide{
+  0%{
+    transform: translate3d(-97em, 0, 0);
+  }
+  100%{
+    transform: translate3d(0em, 0, 0);
+  }
+}
+.page-caption{
+    display: table-cell;
+    margin:0 0 0 0.2em;
+}
+/*Header menu --- BEGIN*/
+.header__menu{
+    list-style: none;
+    background: #D32F2F;
+    padding: 0;
+    margin: 0;
+    flex: 0 0 auto;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    justify-content: flex-end;
+}
+.header__menu a{
+    text-decoration: none;
+    display: block;
+    padding: 1.02em;
+    color: white;
+    text-align: center;
+}
+.header__menu a:hover {
+  background: #4CAF50;
+}
+.header__menu a:active {
+  background: #FFCDD2;
+}
+.header__menu a.selected {
+    background: #F44336;
+    pointer-events: none;
+}
+.header__menu li:last-of-type a {
+    border-bottom: none;
+}
+.js-sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0em;
+  width: 100%;
+  align-self: flex-start;
+}
+.menu-stretcher{
+    flex: 1;
+}
+.header__menu .menu__logo-link{
+    padding: 0;
+    margin-left: 0.5em;
+}
+.js-has-logo-before::before{
+    content: url("../img/logo.svg");
+    width: 2.5em;
+    height: 2.5em;
+    display: block;
+    padding: 0.7em 0 0 0.6em;
+    background-color: white;
+}
+/*Submenu styles*/
+.menu-item--has-sub{
+    overflow: hidden;
+    display: inline-block;
+}
+.menu-item--has-sub:hover .menu-item__sub{
+    display: block;
+}
+.menu-item__sub{
+    list-style: none;
+    background: #D32F2F;
+    display: none;
+    position: absolute;
+    padding: 0;
+}
+.menu-item__sub li:first-child{
+    display: none;
+}
+.menu-item__sub li a{
+    text-align: left;
+}
+
+@media all and (max-width: 800px) {
+  .header__menu {
+    justify-content: space-around;
+  }
+}
+@media all and (max-width: 600px) {
+  .header__menu {
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    padding: 0;
+    }
+  .menu-item--has-sub{
+    overflow: initial;
+  }
+  .menu-item--has-sub:active .menu-item__sub,
+  .menu-item--has-sub:hover .menu-item__sub{
+      display: block;
+      position: relative;
+  }
+  .menu-item--has-sub > a{
+     pointer-events: none;
+  }
+  .menu-item__sub li:first-child{
+    display: block;
+  }
+  .js-sticky {
+    position: static;
+    position: -webkit-static;
+  }
+}
+/*Header menu --- END*/
+
+/*Catalog*/
+.showcase{
+width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+.showcase__item{
+    margin: 0.5em 0.5em;
+}
+.item__img{
+    width: 13em;
+    height: 13em;
+}
+.showcase__item a{
+    text-decoration: none;
+    color: #454545;
+    display: block;
+}
+.showcase__item:hover a{
+    background-color: #4CAF50;
+    color: white;
+}
+.showcase__item a:active{
+    color: #D32F2F;
+}
+.item__buttons{
+    padding: 0.3em 0 0.5em 0;
+}
+.item__buttons button{
+    background-color: #f8f8f8;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    line-height: 0em;
+    outline: none;
+}
+item__buttons button[name="to-cart"]{
+    border: 0.1em solid #4CAF50;
+}
+item__buttons button[name="to-cart"]:hover{
+     background-color: #4CAF50;
+     color: white;
+}
+item__buttons button[name="buy-now"]{
+     border: 0.1em solid #FFCDD2;
+}
+item__buttons button[name="buy-now"]:hover{
+    background-color: #FFCDD2;
+    color: white;
+}
+.item__buttons button:active{
+      outline: 0.2em dashed white;
+      outline-offset: -0.2em;
+}
+
+/*Catalog Item*/
+.top-wrapper{
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+
+    flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+
+    justify-content: flex-start;
+    align-items: stretch;
+}
+.top-wrapper > *{
+    min-width: 15em;
+}
+.top-wrapper__img-wrapper{
+   flex: 1 1 0;
+   align-self: center;
+   height: 14.8em;
+   overflow: hidden;
+   margin: 0 1em 0 1em;
+   outline: 0.1em solid red;
+   outline-offset: -0.1em;
+   /*For children layout*/
+   display: flex;
+   flex-flow: column nowrap;
+   justify-content: center;
+   align-items: center;
+}
+.top-wrapper__img-wrapper:hover{
+    outline: none;
+}
+.img-wrapper__img{
+    flex: none;
+    height: 15em;
+}
+.top-wrapper__short-description{
+    flex: 2 0 0;
+    border-left: 0.1em solid #D32F2F;
+    padding: 0 1em;
+    font-style: italic;
+    text-align: justify;
+}
+.top-wrapper__properties{
+    flex: 2 0 0;
+    border-left: 0.1em solid #D32F2F;
+    padding-left: 1em;
+}
+.top-wrapper__properties li{
+    list-style: none;
+    line-height: 2em;
+}
+.top-wrapper__properties li:before{
+   content: '';
+   display: inline-block;
+   height: 1em;
+   width: 1em;
+   margin: 0 0 -0.1em 0;
+   background-image: url('https://openclipart.org/download/192636/silhouette-tractor.svg');
+}
+.top-wrapper__properties span{
+    color: #212121;
+    font-weight: bold;
+}
+
+.buttons-wrapper{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    background-color: white;
+    height: 2em;
+    max-width: 45em;
+    margin: 0 0 0 4em;
+    padding: 0.7em 0 0.6em 1em;
+}
+.buttons-wrapper > *{
+    margin: 0 1em 0 0;
+}
+.buttons-wrapper__name,
+.buttons-wrapper__price{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #212121;
+}
+.buttons-wrapper__name{
+    flex: 1 0 6em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.buttons-wrapper__price{
+    color: #D32F2F;
+}
+.price__currency{
+    color: #212121;
+}
+
+.buttons-wrapper button{
+    background-color: #f8f8f8;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    line-height: 0em;
+    outline: none;
+}
+button[name="to-cart"]{
+    border: 0.1em solid #4CAF50;
+}
+button[name="to-cart"]:hover{
+     background-color: #4CAF50;
+     color: white;
+}
+button[name="buy-now"]{
+     border: 0.1em solid #FFCDD2;
+}
+button[name="buy-now"]:hover{
+    background-color: #FFCDD2;
+    color: white;
+}
+.buttons-wrapper button:active{
+      outline: 0.2em dashed white;
+      outline-offset: -0.2em;
+}
+.table-for-hw table{
+    border: 0.1em solid #BDBDBD;
+    line-height: 1.5em;
+    border-collapse: collapse;
+}
+.table-for-hw table td{
+    border: 0.1em solid #BDBDBD;
+    padding: 0 0.3em 0 0.3em;
+}
+.table-for-hw table tr:first-child{
+    line-height: 2em;
+    font-weight: bold;
+}
+.table-for-hw table tr td:not(:first-child){
+    text-align: center;
+}
+.description{
+    padding: 0 0 0 0.5em;
+}
+.description section{
+    padding: 0 0 0 0.5em;
+    border-left: 0.1em solid #4CAF50;
+    text-align: justify;
+}
+.description section:first-letter,
+.description section p:first-letter{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.4em;
+    color: #D32F2F;
+}
+
+/*Contacts*/
+#contacts{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+#contacts > *{
+    flex: 1 1 15em;
+    border-left: 0.1em solid #4CAF50;
+    padding: 0 0.5em 0 0.5em;
+    margin: 0 0 0.5em 0;
+
+}
+#contacts a{
+    text-decoration: none;
+    color: #4CAF50;
+    border-bottom: 0.1em dashed #BDBDBD;
+}
+
+/*Feedback form*/
+.contacts__feedback-form {
+   line-height: 2em;
+   font-size: 1em;
+}
+.contact-form-wrapper{
+   margin: 0 0 0 2em;
+   max-width: 20em;
+
+   display: -webkit-box;
+   display: -webkit-flex;
+
+   display: -ms-flexbox;
+
+   display: flex;
+   -webkit-box-orient: vertical;
+   -webkit-box-direction: normal;
+       -ms-flex-flow: column wrap;
+           flex-flow: column wrap;
+   -webkit-box-align: stretch;
+       -ms-flex-align: stretch;
+           align-items: stretch;
+}
+
+.contacts__feedback-form input[type="text"],
+.contacts__feedback-form input[type="email"],
+.contacts__feedback-form textarea{
+    align-self: stretch;
+    outline: 0.1em solid #BDBDBD;
+    color: #4CAF50;
+    margin: 0 0 0.5em 0;
+    padding: 0 0 0 0.5em;
+    min-width: 19.2em;
+    line-height: inherit;
+    font-size: inherit;
+}
+.contacts__feedback-form input[type="text"],
+.contacts__feedback-form textarea{
+    text-transform: capitalize;
+}
+.contacts__feedback-form textarea{
+   padding-top: 0.1em;
+   resize: none;
+   line-height: 1.5em;
+   height: 4.9em;
+}
+.contacts__feedback-form input[type="text"],
+.contacts__feedback-form input[type="email"]{
+     height: 1.5em;
+}
+.contacts__feedback-form input[type="text"]:focus,
+.contacts__feedback-form input[type="email"]:focus,
+.contacts__feedback-form textarea:focus{
+    outline: 0.1em solid #4CAF50;
+    outline-offset: 0;
+}
+.contacts__feedback-form input[type="text"]:invalid + span,
+.contacts__feedback-form input[type="email"]:invalid + span{
+    color: #D32F2F;
+}
+.contacts__feedback-form input[type="text"]:valid + span,
+.contacts__feedback-form input[type="email"]:valid + span{
+    display: none;
+}
+.warning-marker{
+    position: relative;
+    top: -1.6em;
+    left: 21em;
+    line-height: 0em;
+}
+.js-hidden{
+    display: none;
+}
+/*Contact form buttons:*/
+ .contact-form-wrapper__buttons{
+    text-align: right;
+ }
+ input[type="submit"],
+ input[type="reset"]{
+    background-color: #f8f8f8;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    padding: 1em 1em;
+    font-size: 1em;
+}
+input[type="submit"]{
+    border: 0.2em solid #4CAF50;
+}
+input[type="submit"]:hover{
+     background-color: #4CAF50;
+     color: white;
+}
+input[type="reset"]{
+     border: 0.2em solid #FFCDD2;
+}
+input[type="reset"]:hover{
+    background-color: #FFCDD2;
+    color: white;
+}
+/*
+    DARK PRIMARY COLOR  #D32F2F
+    LIGHT PRIMARY COLOR #FFCDD2
+    PRIMARY COLOR   #F44336
+    TEXT / ICONS    #FFFFFF
+    ACCENT COLOR    #4CAF50
+    PRIMARY TEXT    #212121
+    SECONDARY TEXT  #757575
+    DIVIDER COLOR   #BDBDBD
+*/

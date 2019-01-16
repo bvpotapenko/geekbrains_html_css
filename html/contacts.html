@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+	      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/styles.css">
+	<title>Контактная информация</title>
+</head>
+<body>
+<header class="header">
+	<div class="header__top">
+		<div class="logo"><a class="" href="./index.html"></a></div>
+		<H1 class="page-caption">Контакты</H1>
+	</div>
+</header>
+<ul class="header__menu  js-sticky">
+	<a class="menu__logo-link" href="./index.html"><span class="js-has-logo-before"></span></a>
+	<div class="menu-stretcher"></div>
+	<li><a href="./index.html">Главная</a></li>
+	<li class="menu-item--has-sub">
+		<a href="./catalog/index.html">Каталог</a>
+		<ul class="menu-item__sub">
+			<li><a href="./catalog/index.html">Перейти в каталог</a></li>
+			<li><a href="./catalog/good_1.html">Говядина</a></li>
+			<li><a href="./catalog/good_2.html">Свинина</a></li>
+			<li><a href="./catalog/good_3.html">Куриное мясо</a></li>
+		</ul>
+	</li>
+	<li><a class="selected" href="#">Контакты</a></li>
+</ul>
+<main id="contacts">
+	<div itemscope itemtype="http://schema.org/LocalBusiness">
+		<h2 itemprop="name">Продукты&nbsp;от&nbsp;фермера</h2>
+		<span itemprop="description"> Мы&nbsp;доставляем&nbsp;продукты от&nbsp;лучших&nbsp;фермеров&nbsp;страны!</span><br><br>
+		<address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+			<span itemprop="addressCountry">Россия</span>,
+			<span itemprop="addressRegion">Приморский край</span>,
+			<span itemprop="addressLocality">Владивосток</span>,
+			<span itemprop="streetAddress">Светланская 25</span>.
+		</address>
+		<br>
+		Phone: <span itemprop="telephone"><a href="tel:+74951234567">+7 (495) 123-45-67</a></span>
+	</div>
+	<map>
+		<h2>Мы на карте:</h2>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2912.4509639488106!2d131.88324841509288!3d43.116051879143434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5fb38df73d9f518f%3A0xe9cc01e71ef7fdcf!2sSvetlanskaya+St%2C+25%2C+Vladivostok%2C+Primorskiy+kray%2C+Russia%2C+690091!5e0!3m2!1sen!2s!4v1546699380374"
+		        width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+	</map>
+	<form class="contacts__feedback-form" action="JavaScript:alert(&quot;Спасибо!&quot;);" method="post">
+		<h2>Отправьте нам сообщение:</h2>
+		<div class="contact-form-wrapper">
+			<span>Ваше имя:</span>
+			<input type="text" id="feedback-name-input" name="name" placeholder="Например: Антон Сихарулидзе"
+			       pattern="^[a-zA-Zа-яА-Я]+(?:[\s.]+[a-zA-Zа-яА-Я]+)*$" required>
+			<span class="fas fa-times js-hidden warning-marker"></span>
+			
+			<span>Ваш E-mail:</span>
+			<input type="email" id="feedback-email-input" name="email"
+			       pattern="(?!(^[.-].*|[^@]*[.-]@|.*\.{2,}.*)|^.{254}.)([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@)(?!-.*|.*-\.)([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,15}"
+			       placeholder="Например: mail@mail.dom" required>
+			<span class="fas fa-times js-hidden warning-marker"></span>
+			
+			<span>Сообщение:</span>
+			<textarea name="message" placeholder="Напишите нам что-нибудь приятное! &colon;&rpar;"></textarea>
+			<div class="contact-form-wrapper__buttons">
+				<input type="reset" value="Очистить">
+				<input type="submit" value="Отправить">
+			</div>
+		</div>
+	</form>
+	<script>
+		var emailInput = document.getElementById("feedback-email-input");
+		var nameInput = document.getElementById("feedback-name-input");
+		
+		var enableWarning = function (event){
+			var warningMarker = event.target.nextElementSibling;
+			warningMarker.classList.remove("js-hidden");
+		}
+		emailInput.addEventListener("click", enableWarning, false);
+		nameInput.addEventListener("click", enableWarning, false);
+	
+	
+	</script>
+</main>
+<footer>
+	<hr>
+	<div>Все права защищены &copy; 2019</div>
+</footer>
+</body>
+</html>
